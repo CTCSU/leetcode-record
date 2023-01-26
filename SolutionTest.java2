@@ -1,0 +1,24 @@
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+
+public class SolutionTest {
+
+	private Solution solution;
+
+	@Before
+	public void setup() {
+		this.solution = new Solution();
+	}
+
+	@Test
+	public void shouldMaximalSquare() {
+		char[][] matrix = { { '1', '1' }, { '1', '1' } };
+
+		int actualValue = solution.maximalSquare(matrix);
+
+		assertEquals(4, actualValue);
+	}
+
+}
