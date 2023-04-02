@@ -1,3 +1,5 @@
+import java.util.List;
+
 /*
  * @lc app=leetcode.cn id=139 lang=java
  * @lcpr version=21705
@@ -8,6 +10,22 @@
 // @lc code=start
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
+        int m = s.length();
+        boolean[] canBreak = new boolean[m + 1];
+        canBreak[0] = true;
+        for (int j = 1; j <= m; j++) {
+            for (int i = 0; i < wordDict.size(); i++) {
+                String currentWord = wordDict.get(i);
+                int curLength = currentWord.length();
+                if (j >= curLength) {
+                    if (s.substring(j - curLength, j).equals(currentWord)) {
+                        canBreak[j] |= canBreak[j - curLength];
+                    }
+                }
+            }
+        }
+
+        return canBreak[m];
 
     }
 }
