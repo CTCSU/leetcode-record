@@ -23,15 +23,23 @@ class Solution {
 
         }
 
+        return dp.size();
+
     }
 
     private void updateDp(List<Integer> dp, int i) {
         int l = 0, r = dp.size() - 1;
+        int ans = r;
         while(l <= r) {
             int mid = l + (int)Math.floor((r-l)/2);
-            if()
+            if (dp.get(mid) >= i) {
+                ans = mid;
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
         }
-
+        dp.set(ans, i);
     }
 }
 // @lc code=end
